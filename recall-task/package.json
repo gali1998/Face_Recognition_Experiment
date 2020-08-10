@@ -10,6 +10,7 @@
     "express-favicon": "^2.0.1",
     "path": "^0.12.7",
     "react": "^16.13.1",
+    "react-datasheet": "^1.4.8",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
   },
