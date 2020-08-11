@@ -7,18 +7,27 @@ import './Cell.css';
 class Spreadsheet extends Component {
     constructor(props) {
         super(props);
-        
+        this.state = {
+            grid: [
+              [{ value: "", dateOfChange: null }, { value: "", dateOfChange: null}],
+              [{ value: "", dateOfChange: null }, { value: "", dateOfChange: null}],
+            ],
+            columns: [{name: "col1"}, {name: "col1"}, {name: "col1"}, {name: "col1"}]
+          };
       }
     render() {
         return(
             <ReactDataSheet 
             className = "cell-style"
-            data={this.props.grid}
-            valueRenderer={cell => cell.name}
+            data={this.state.grid}
+            valueRenderer={cell => cell.value}
             onCellsChanged={changes => {
             const grid = this.state.grid.map(row => [...row]);
             changes.forEach(({ cell, row, col, value }) => {
-                grid[row][col] = { ...grid[row][col], value };
+                if (value.length > 1){
+                    grid[row][col] = { ...grid[row][col], value, dateOfChange: new Date() };
+                    console.log(grid[row][col])
+                }
             });
             this.setState({ grid });
             }}
