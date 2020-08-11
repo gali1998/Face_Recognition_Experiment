@@ -9,10 +9,10 @@ class Spreadsheet extends Component {
         super(props);
         this.state = {
             grid: [
-              [{ value: "", dateOfChange: null }, { value: "", dateOfChange: null}],
+              [{ value: "col1", dateOfChange: null, readOnly: true }, { value: "col2", dateOfChange: null, readOnly: true}],
               [{ value: "", dateOfChange: null }, { value: "", dateOfChange: null}],
             ],
-            columns: [{name: "col1"}, {name: "col1"}, {name: "col1"}, {name: "col1"}]
+            columns: [{name: "col1"}, {name: "col1"}]
           };
       }
     render() {
@@ -21,6 +21,7 @@ class Spreadsheet extends Component {
             className = "cell-style"
             data={this.state.grid}
             valueRenderer={cell => cell.value}
+            
             onCellsChanged={changes => {
             const grid = this.state.grid.map(row => [...row]);
             changes.forEach(({ cell, row, col, value }) => {
