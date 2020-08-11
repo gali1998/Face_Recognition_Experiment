@@ -26,7 +26,7 @@ class Spreadsheet extends Component {
             const grid = this.state.grid.map(row => [...row]);
             changes.forEach(({ cell, row, col, value }) => {
                 if (value.length > 1){
-                    grid[row][col] = { ...grid[row][col], value, dateOfChange: new Date() };
+                    grid[row][col] = { ...grid[row][col], value, dateOfChange: new Date(), readOnly: true };
                     console.log(grid[row][col])
                 }
             });
