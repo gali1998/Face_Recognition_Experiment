@@ -9,7 +9,7 @@ class Spreadsheet extends Component {
         super(props);
         this.state = {
             grid: [
-              [{ value: "col1", dateOfChange: null, readOnly: true }, { value: "col2", dateOfChange: null, readOnly: true}],
+              [{ value: "col1", dateOfChange: null, className: "cell-header", readOnly: true }, { value: "col2", dateOfChange: null, readOnly: true, className: "cell-header"}],
               [{ value: "", dateOfChange: null }, { value: "", dateOfChange: null}],
             ],
             columns: [{name: "col1"}, {name: "col1"}]

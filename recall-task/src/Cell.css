@@ -3,3 +3,8 @@
     width: 100px;
     border-color: black;
 }
+
+.cell-header {
+    background-color:darkgray !important;
+    color: white !important;
+}
