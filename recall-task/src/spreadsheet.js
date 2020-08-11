@@ -3,16 +3,13 @@ import ReactDataSheet from 'react-datasheet';
 import 'react-datasheet/lib/react-datasheet.css';
 import React, {Component} from 'react';
 import './Cell.css';
+import {getGrid} from './gridGenerator'
 
 class Spreadsheet extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            grid: [
-              [{ value: "col1", dateOfChange: null, className: "cell-header", readOnly: true }, { value: "col2", dateOfChange: null, readOnly: true, className: "cell-header"}],
-              [{ value: "", dateOfChange: null }, { value: "", dateOfChange: null}],
-            ],
-            columns: [{name: "col1"}, {name: "col1"}]
+            grid: getGrid(),
           };
       }
     render() {
