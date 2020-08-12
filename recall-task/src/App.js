@@ -24,14 +24,12 @@ class App extends Component {
 
   getData = async (grid)=> {
     await this.setState({table:grid, didGetTable: true})
-    console.log(this.state.table)
   }
 
   render() {
    
     return (
-      <div>
-        <h1>Recall task</h1>
+      <div className="general">
         <Identification clickAction = {this.handleClick.bind(this)} show = {this.state.showId}/>
         <Spreadsheet getData={this.getData.bind(this)} ended={this.state.showEndOfExperiment} didGetTable={this.state.didGetTable} show = {this.state.showSpreadsheet}/>
         <EndOfExperiment id={this.state.id} show = {this.state.didGetTable} />

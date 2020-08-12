@@ -1,4 +1,6 @@
+import './identification.css'
 import React, {Component} from 'react';
+import { Button } from '@material-ui/core';
 
 class Identification extends Component {
     constructor(props) {
@@ -39,13 +41,12 @@ class Identification extends Component {
           return null;
         }
         return (
-          <form onSubmit={this.handleSubmit}>
-            <label>
-              Name:
-              <input type="text" value={this.state.value} onChange={this.handleChange} />
-            </label>
-            <input type="submit" value="Submit" />
-          </form>
+          <div className="iden">
+              <h1>הכנס ת"ז:</h1>
+              <input className="box" type="text" value={this.state.value} onChange={this.handleChange} /><br></br>
+            <Button variant="contained" color="primary" onClick={this.handleSubmit}>אישור</Button>
+          
+          </div>
         );
       }
 }
