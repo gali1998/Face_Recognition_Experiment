@@ -12,9 +12,15 @@ class Spreadsheet extends Component {
             grid: getGrid(),
           };
       }
+      sendData = () => {
+        this.props.getData(this.state.grid);
+      }
     render() {
         
         if (this.props.show == false){
+            if (this.props.ended == true && this.props.didGetTable == false){
+                this.sendData()
+            }
             return null;
         }
 

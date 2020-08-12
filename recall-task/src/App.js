@@ -9,12 +9,11 @@ import ReactTimeout from 'react-timeout'
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {showId: true, showSpreadsheet: false, showEndOfExperiment: false, id: ''};
+    this.state = {showId: true, showSpreadsheet: false, showEndOfExperiment: false, id: '', table: [], didGetTable: false};
     
   }
 
   handleClick(id){
-    alert("entered");
     this.setState({showId: false, showSpreadsheet: true, id: id});
     this.props.setTimeout(this.endExperiment, 10000);
   }
@@ -23,14 +22,19 @@ class App extends Component {
     this.setState({showSpreadsheet: false, showEndOfExperiment: true})
   }
 
+  getData = async (grid)=> {
+    await this.setState({table:grid, didGetTable: true})
+    console.log(this.state.table)
+  }
+
   render() {
    
     return (
       <div>
         <h1>Recall task</h1>
         <Identification clickAction = {this.handleClick.bind(this)} show = {this.state.showId}/>
-        <Spreadsheet show = {this.state.showSpreadsheet}/>
-        <EndOfExperiment id={this.state.id} show = {this.state.showEndOfExperiment} />
+        <Spreadsheet getData={this.getData.bind(this)} ended={this.state.showEndOfExperiment} didGetTable={this.state.didGetTable} show = {this.state.showSpreadsheet}/>
+        <EndOfExperiment id={this.state.id} show = {this.state.didGetTable} />
       </div>
     );
   }
