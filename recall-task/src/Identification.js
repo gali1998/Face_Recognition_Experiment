@@ -30,7 +30,7 @@ class Identification extends Component {
         }
        
         this.setState({id: id})
-        this.props.clickAction();
+        this.props.clickAction(id);
         event.preventDefault();
       }
     

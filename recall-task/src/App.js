@@ -9,19 +9,20 @@ import ReactTimeout from 'react-timeout'
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {showId: true, showSpreadsheet: false, showEndOfExperiment: false};
+    this.state = {showId: true, showSpreadsheet: false, showEndOfExperiment: false, id: ''};
     
   }
 
-  handleClick(){
+  handleClick(id){
     alert("entered");
-    this.setState({showId: false, showSpreadsheet: true});
+    this.setState({showId: false, showSpreadsheet: true, id: id});
     this.props.setTimeout(this.endExperiment, 10000);
   }
 
   endExperiment = () => {
     this.setState({showSpreadsheet: false, showEndOfExperiment: true})
   }
+
   render() {
    
     return (
@@ -29,7 +30,7 @@ class App extends Component {
         <h1>Recall task</h1>
         <Identification clickAction = {this.handleClick.bind(this)} show = {this.state.showId}/>
         <Spreadsheet show = {this.state.showSpreadsheet}/>
-        <EndOfExperiment show = {this.state.showEndOfExperiment} />
+        <EndOfExperiment id={this.state.id} show = {this.state.showEndOfExperiment} />
       </div>
     );
   }
