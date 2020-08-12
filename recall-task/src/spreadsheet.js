@@ -13,6 +13,9 @@ class Spreadsheet extends Component {
           };
       }
     render() {
+        if (this.props.show == false){
+            return null;
+        }
         return(
             <ReactDataSheet 
             className = "cell-style"
