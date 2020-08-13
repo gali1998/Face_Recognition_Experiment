@@ -5,6 +5,7 @@ import Spreadsheet from './spreadsheet';
 import Identification from './Identification';
 import EndOfExperiment from './EndOfExperiment';
 import ReactTimeout from 'react-timeout'
+import axios from 'axios';
 
 class App extends Component {
   constructor(props) {
@@ -23,7 +24,20 @@ class App extends Component {
   }
 
   sendToServer = () => {
-    this.setState({didSendToServer: true});
+    let data = {
+      "id": this.state.id,
+      "results": this.state.table
+    }
+
+    console.log(this.state.table);
+
+    axios.post(`http://experiment-database.herokuapp.com/results`, { data })
+    .then(res => {
+      this.setState({didSendToServer: true});
+    }).catch(err => {
+      console.log(err)
+    })
+    
   }
 
   getData = async (grid)=> {
