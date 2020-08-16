@@ -16,17 +16,17 @@ class Identification extends Component {
       }
     
       handleSubmit(event) {
-        if (this.state.value.length > 9){
+        if (this.state.value.length > 5){
             alert("תז ארוך מידי");
             return;
         }
-        if (this.state.value.length < 9){
+        if (this.state.value.length < 5){
             alert("תז קצר מידי");
             return;
         }
 
         let id = this.state.value;
-        if(id.match("^[1-9 ]*$")==null) {
+        if(id.match("^[0-9 ]*$")==null) {
           alert("תז חייב להכיל מספרים בלבד");
           return;
         }
