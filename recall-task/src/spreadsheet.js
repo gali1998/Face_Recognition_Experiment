@@ -3,7 +3,7 @@ import ReactDataSheet from 'react-datasheet';
 import 'react-datasheet/lib/react-datasheet.css';
 import React, {Component} from 'react';
 import './Cell.css';
-import {getGrid} from './gridGenerator'
+import {getGrid, extendGrid} from './gridGenerator'
 
 class Spreadsheet extends Component {
     constructor(props) {
@@ -31,11 +31,14 @@ class Spreadsheet extends Component {
             valueRenderer={cell => cell.value}
             
             onCellsChanged={changes => {
-            const grid = this.state.grid.map(row => [...row]);
+            let grid = this.state.grid.map(row => [...row]);
             changes.forEach(({ cell, row, col, value }) => {
                 if (value.length > 1){
                     grid[row][col] = { ...grid[row][col], value, dateOfChange: new Date(), readOnly: true };
                     console.log(grid[row][col])
+                    if (row == this.state.grid.length - 1) {
+                        grid = extendGrid(grid);
+                    }
                 }
             });
             this.setState({ grid });

@@ -6,6 +6,7 @@ import Identification from './Identification';
 import EndOfExperiment from './EndOfExperiment';
 import ReactTimeout from 'react-timeout'
 import axios from 'axios';
+import { getMinimizedGrid } from './gridGenerator';
 
 class App extends Component {
   constructor(props) {
@@ -16,7 +17,8 @@ class App extends Component {
 
   handleClick(id){
     this.setState({showId: false, showSpreadsheet: true, id: id});
-    this.props.setTimeout(this.endExperiment, 10000);
+    this.props.setTimeout(this.endExperiment,  100000);
+    // one hour is 3600000 milliseconds
   }
 
   endExperiment = () => {
@@ -24,12 +26,13 @@ class App extends Component {
   }
 
   sendToServer = () => {
+    let grid = getMinimizedGrid(this.state.table);
     let data = {
       "id": this.state.id,
-      "results": this.state.table
+      "results": grid
     }
 
-    console.log(this.state.table);
+    console.log(grid);
 
     axios.post(`http://experiment-database.herokuapp.com/results`, { data })
     .then(res => {
