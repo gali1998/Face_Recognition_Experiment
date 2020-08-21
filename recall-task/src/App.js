@@ -11,7 +11,7 @@ import { getMinimizedGrid } from './gridGenerator';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {showId: true, showSpreadsheet: false, showEndOfExperiment: false, id: '', table: [], didGetTable: false, didSendToServer: false};
+    this.state = {startTime: new Date(), showId: true, showSpreadsheet: false, showEndOfExperiment: false, id: '', table: [], didGetTable: false, didSendToServer: false};
     
   }
 
@@ -29,7 +29,8 @@ class App extends Component {
     let grid = getMinimizedGrid(this.state.table);
     let data = {
       "id": this.state.id,
-      "results": grid
+      "results": grid,
+      "startTime": this.state.startTime
     }
 
     console.log(grid);
