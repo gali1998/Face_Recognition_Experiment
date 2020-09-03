@@ -11,13 +11,14 @@ import { getMinimizedGrid } from './gridGenerator';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {startTime: new Date(), showId: true, showSpreadsheet: false, showEndOfExperiment: false, id: '', table: [], didGetTable: false, didSendToServer: false};
+    this.state = {startTime: null, showId: true, showSpreadsheet: false, showEndOfExperiment: false, id: '', table: [], didGetTable: false, didSendToServer: false};
     
   }
 
   handleClick(id){
-    this.setState({showId: false, showSpreadsheet: true, id: id});
-    this.props.setTimeout(this.endExperiment,  100000);
+    let dur = 3600000 / (12)
+    this.setState({showId: false, showSpreadsheet: true, id: id, startTime: new Date()});
+    this.props.setTimeout(this.endExperiment,  dur);
     // one hour is 3600000 milliseconds
   }
 
