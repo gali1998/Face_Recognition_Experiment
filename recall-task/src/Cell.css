@@ -1,11 +1,9 @@
 .cell-style {
     height: 50px;
-    width: 60cpx;
     border-color: black;
 }
 
 .cell-header {
     background-color:darkgray !important;
     color: white !important;
-    width: 100px !important;
 }

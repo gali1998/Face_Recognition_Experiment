@@ -5,7 +5,7 @@ export function getGrid() {
     let h = []
 
     columnNames.forEach(name => {
-        h.push({ value: name, dateOfChange: null, className: "cell-header", readOnly: true })
+        h.push({ value: name, dateOfChange: null, className: "cell-header", readOnly: true, width: 50 })
     })
 
     grid.push(h)
@@ -14,7 +14,7 @@ export function getGrid() {
         let line = []
         
         columnNames.forEach(name => {
-            line.push({ value: "", dateOfChange: null})
+            line.push({ value: "", dateOfChange: null, width: 50})
         })
         
         grid.push(line)
